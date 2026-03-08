@@ -1,14 +1,15 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Trophy, Music, Drama, Microscope, Volleyball, Brush } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Trophy, Music, Drama, Microscope, Volleyball, Brush, ArrowRight } from "lucide-react";
 
 const activities = [
-  { icon: Trophy, title: "Athletics", desc: "Football, basketball, track, swimming, and more competitive sports.", color: "bg-secondary" },
-  { icon: Music, title: "Music & Band", desc: "Marching band, jazz ensemble, choir, and solo performances.", color: "bg-accent" },
-  { icon: Drama, title: "Drama Club", desc: "Annual plays, musicals, and improv comedy nights.", color: "bg-secondary" },
-  { icon: Microscope, title: "Science Club", desc: "Research projects, science fairs, and STEM competitions.", color: "bg-accent" },
-  { icon: Volleyball, title: "Intramurals", desc: "Recreational leagues for every skill level and interest.", color: "bg-secondary" },
-  { icon: Brush, title: "Art Club", desc: "Exhibitions, workshops, and collaborative art installations.", color: "bg-accent" },
+  { icon: Trophy, title: "Athletics", desc: "Football, basketball, track, swimming, and more competitive sports.", color: "bg-secondary", href: "/activities/athletics" },
+  { icon: Music, title: "Music & Band", desc: "Marching band, jazz ensemble, choir, and solo performances.", color: "bg-accent", href: "/activities/music" },
+  { icon: Drama, title: "Drama Club", desc: "Annual plays, musicals, and improv comedy nights.", color: "bg-secondary", href: "/activities/drama" },
+  { icon: Microscope, title: "Science Club", desc: "Research projects, science fairs, and STEM competitions.", color: "bg-accent", href: "/activities/science-club" },
+  { icon: Volleyball, title: "Intramurals", desc: "Recreational leagues for every skill level and interest.", color: "bg-secondary", href: "/activities/intramurals" },
+  { icon: Brush, title: "Art Club", desc: "Exhibitions, workshops, and collaborative art installations.", color: "bg-accent", href: "/activities/art-club" },
 ];
 
 const ActivitiesSection = () => {
@@ -43,13 +44,20 @@ const ActivitiesSection = () => {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.5, delay: 0.1 + i * 0.08 }}
-              className="bg-card rounded-xl p-6 shadow-md hover:shadow-xl transition-all hover:-translate-y-1 border border-border group cursor-default"
             >
-              <div className={`w-12 h-12 rounded-lg ${a.color} flex items-center justify-center mb-4`}>
-                <a.icon className="text-primary-foreground" size={24} />
-              </div>
-              <h3 className="text-xl font-display font-semibold text-foreground mb-2">{a.title}</h3>
-              <p className="text-muted-foreground leading-relaxed">{a.desc}</p>
+              <Link
+                to={a.href}
+                className="block bg-card rounded-xl p-6 shadow-md hover:shadow-xl transition-all hover:-translate-y-1 border border-border group"
+              >
+                <div className={`w-12 h-12 rounded-lg ${a.color} flex items-center justify-center mb-4`}>
+                  <a.icon className="text-primary-foreground" size={24} />
+                </div>
+                <h3 className="text-xl font-display font-semibold text-foreground mb-2">{a.title}</h3>
+                <p className="text-muted-foreground leading-relaxed mb-3">{a.desc}</p>
+                <span className="inline-flex items-center gap-1 text-sm font-semibold text-secondary group-hover:gap-2 transition-all">
+                  Learn More <ArrowRight size={16} />
+                </span>
+              </Link>
             </motion.div>
           ))}
         </div>
