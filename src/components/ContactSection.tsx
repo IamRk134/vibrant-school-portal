@@ -56,42 +56,26 @@ const ContactSection = () => {
             ))}
           </motion.div>
 
-          {/* Contact form */}
-          <motion.form
+          {/* Google Form */}
+          <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="bg-primary-foreground/10 backdrop-blur-sm rounded-xl p-6 space-y-4 border border-primary-foreground/10"
-            onSubmit={(e) => e.preventDefault()}
+            className="bg-primary-foreground/10 backdrop-blur-sm rounded-xl overflow-hidden border border-primary-foreground/10"
           >
-            <input
-              type="text"
-              placeholder="Your Name"
-              className="w-full px-4 py-3 rounded-lg bg-primary-foreground/10 border border-primary-foreground/15 text-primary-foreground placeholder:text-primary-foreground/40 focus:outline-none focus:ring-2 focus:ring-secondary/50"
-            />
-            <input
-              type="email"
-              placeholder="Email Address"
-              className="w-full px-4 py-3 rounded-lg bg-primary-foreground/10 border border-primary-foreground/15 text-primary-foreground placeholder:text-primary-foreground/40 focus:outline-none focus:ring-2 focus:ring-secondary/50"
-            />
-            <select className="w-full px-4 py-3 rounded-lg bg-primary-foreground/10 border border-primary-foreground/15 text-primary-foreground/70 focus:outline-none focus:ring-2 focus:ring-secondary/50">
-              <option value="">Select Inquiry Type</option>
-              <option value="enrollment">Enrollment</option>
-              <option value="tour">Campus Tour</option>
-              <option value="general">General Question</option>
-            </select>
-            <textarea
-              rows={4}
-              placeholder="Your Message"
-              className="w-full px-4 py-3 rounded-lg bg-primary-foreground/10 border border-primary-foreground/15 text-primary-foreground placeholder:text-primary-foreground/40 focus:outline-none focus:ring-2 focus:ring-secondary/50 resize-none"
-            />
-            <button
-              type="submit"
-              className="w-full py-3 rounded-lg bg-secondary text-secondary-foreground font-semibold text-lg hover:opacity-90 transition-opacity"
+            <iframe
+              src="https://docs.google.com/forms/d/e/1FAIpQLSdwNolwFtP1I-umz3OlNc8qkwXDXROtjLJU3icLo3pYxHMH-g/viewform?embedded=true"
+              width="100%"
+              height="957"
+              frameBorder="0"
+              marginHeight={0}
+              marginWidth={0}
+              title="Contact Form"
+              className="w-full"
             >
-              Send Message
-            </button>
-          </motion.form>
+              Loading…
+            </iframe>
+          </motion.div>
         </div>
       </div>
     </section>
